@@ -54,7 +54,7 @@ async function migrateTables(tables) {
         .where("table_schema", "public")
         .where("table_name", "like", "%_components")
     )
-      .map((row) => row.table_name)
+      .map((row) => row.TABLE_NAME)
       .filter((item) => !componentsToMigrate.includes(item));
   }
 
@@ -74,7 +74,7 @@ async function migrateTables(tables) {
         .select("table_name")
         .where("table_name", "like", "%_components")
     )
-      .map((row) => row.table_name)
+      .map((row) => row.TABLE_NAME)
       .filter((item) => !componentsToMigrate.includes(item));
   }
 

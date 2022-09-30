@@ -147,7 +147,7 @@ async function migrateRelations(tables, relations) {
       await dbV4("information_schema.tables")
         .select("table_name")
         .where("table_schema", "public")
-    ).map((row) => row.table_name);
+    ).map((row) => row.TABLE_NAME);
   }
 
   if (isSQLITE) {
@@ -159,7 +159,7 @@ async function migrateRelations(tables, relations) {
   if (isMYSQL) {
     v4Tables = (
       await dbV4("information_schema.tables").select("table_name")
-    ).map((row) => row.table_name);
+    ).map((row) => row.TABLE_NAME);
   }
 
   relations = relations.filter((r) => v4Tables.includes(r.table));

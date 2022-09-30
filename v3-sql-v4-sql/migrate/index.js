@@ -40,7 +40,7 @@ async function migrate() {
       await dbV3("information_schema.tables")
         .select("table_name")
         .where("table_schema", "public")
-    ).map((row) => row.table_name);
+    ).map((row) => row.TABLE_NAME);
   }
 
   if (isSQLITE) {
@@ -51,7 +51,7 @@ async function migrate() {
 
   if (isMYSQL) {
     tables = (await dbV3("information_schema.tables").select("table_name")).map(
-      (row) => row.table_name
+      (row) => row.TABLE_NAME
     );
   }
 
