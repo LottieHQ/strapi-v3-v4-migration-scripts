@@ -19,10 +19,10 @@ const migrations = [
   migrateCoreStore,
   migrateAdmin,
   migrateUsers,
-  migrateCustom,
   migrateWebhooks,
   migrateI18n,
   migrateFiles,
+  migrateCustom,
 ];
 
 async function migrate() {
