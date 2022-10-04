@@ -9,6 +9,10 @@ async function migrateTables() {
   const destination = "strapi_webhooks";
 
   await migrate(source, destination);
+  await migrate("listings", "listings_partner_brand_links", (listing) => ({
+    listing_id: listing.id,
+    partner_brands_id: listing.partner_brand,
+  }));
 }
 
 module.exports = {
