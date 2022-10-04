@@ -147,9 +147,13 @@ async function migrate(source, destination, itemMapper = undefined) {
         return filteredItems;
       }
     );
-
     if (migratedItems.length > 0) {
-      await dbV4(destination).insert(migratedItems);
+      try {
+        await dbV4(destination).insert(migratedItems);
+      } catch (e) {
+        console.log("error")
+        console.log(e)
+      }
     }
   }
 
